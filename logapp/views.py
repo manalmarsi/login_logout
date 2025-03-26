@@ -43,4 +43,4 @@ def login_view(request):
 # Déconnexion
 def logout_view(request):
     logout(request)
-    return redirect('home')  # Redirige vers la page d'accueil
+    return redirect('login')  # Redirige vers la page d'accueil

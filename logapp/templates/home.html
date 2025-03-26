@@ -7,9 +7,11 @@
         <p>
             {% if user.is_authenticated %}
                 🎉 Vous êtes connecté en tant que <b>{{ user.username }}</b> !
-                <!-- Lien pour se déconnecter -->
-                <br>
-                <a href="{% url 'login' %}">Se déconnecter</a>
+                <!-- Bouton pour se déconnecter -->
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Se déconnecter</button>
+                </form>
             {% else %}
                 🔐 Connectez-vous ou inscrivez-vous pour accéder à plus de fonctionnalités !
                 <br>
