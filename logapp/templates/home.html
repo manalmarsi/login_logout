@@ -4,10 +4,18 @@
 {% block content %}
     <div class="text-center">
         <h1>Bienvenue sur MonSite</h1>
-        <p>{% if user.is_authenticated %} 
-            🎉 Vous êtes connecté en tant que <b>{{ user.username }}</b> !
-        {% else %} 
-            🔐 Connectez-vous ou inscrivez-vous pour accéder à plus de fonctionnalités ! 
-        {% endif %}</p>
+        <p>
+            {% if user.is_authenticated %}
+                🎉 Vous êtes connecté en tant que <b>{{ user.username }}</b> !
+                <!-- Lien pour se déconnecter -->
+                <br>
+                <a href="{% url 'login' %}">Se déconnecter</a>
+            {% else %}
+                🔐 Connectez-vous ou inscrivez-vous pour accéder à plus de fonctionnalités !
+                <br>
+                <a href="{% url 'login' %}">Se connecter</a> | 
+                <a href="{% url 'register' %}">S'inscrire</a>
+            {% endif %}
+        </p>
     </div>
 {% endblock %}
